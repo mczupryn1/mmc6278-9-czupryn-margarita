@@ -1,0 +1,42 @@
+{{> header}}
+
+<main>
+    <h2>Your Meal Plan</h2>
+    <ul>
+        {{#each mealPlanItems}}
+            <li>
+                <img src="{{this.recipeImageURL}}" alt="{{this.recipeName}}">
+                <h3>{{this.recipeName}}</h3>
+                <p>{{this.instructions}}</p>
+                <ul>
+                    <strong>Ingredients:</strong>
+                    {{#each this.ingredients}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                <!-- Notes Section -->
+                <div class="notes-section">
+                    {{#if this.note}}
+                        <h4>Note:</h4>
+                        <p>{{this.note}}</p>
+                        <form action="/delete-note/{{this.planId}}" method="post">
+                            <button type="submit">Delete Note</button>
+                        </form>
+                    {{else}}
+                        <h4>Add a Note:</h4>
+                        <form action="/add-note/{{this.planId}}" method="post">
+                            <textarea name="noteContent" placeholder="Write your note here..."></textarea>
+                            <button type="submit">Save Note</button>
+                        </form>
+                    {{/if}}
+                </div>
+
+                <form action="/remove-from-mealplan/{{this.planId}}" method="post">
+                    <button type="submit">Remove from Meal Plan</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+    <a href="/search-recipes">Add more recipes to your meal plan</a>
+</main>

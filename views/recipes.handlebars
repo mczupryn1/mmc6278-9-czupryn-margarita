@@ -1,0 +1,23 @@
+{{> header}}
+<main>
+    <ul>
+        {{#each recipes}}
+            <li>
+                <img src="{{this.strMealThumb}}" alt="{{this.strMeal}}">
+                <h3>{{this.strMeal}}</h3>
+                <p>{{this.strInstructions}}</p>
+                <a href="{{this.strSource}}">View detailed instructions</a>
+
+                <!-- Add to Meal Plan Form -->
+                <form action="/add-to-mealplan" method="post">
+                    <input type="hidden" name="recipeId" value="{{this.idMeal}}">
+                    <input type="hidden" name="recipeName" value="{{this.strMeal}}">
+                    <input type="hidden" name="recipeImageURL" value="{{this.strMealThumb}}">
+                    <input type="hidden" name="ingredients" value="{{this.strIngredient1}}, {{this.strIngredient2}}, ..."> <!-- List other ingredients as needed -->
+                    <input type="hidden" name="instructions" value="{{this.strInstructions}}">
+                    <button type="submit">Add to Meal Plan</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+</main>

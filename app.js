@@ -30,7 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 
+// Remove the recipe routes from here since they are in recipeRoutes.js now
+
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+// Your routes
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
-
 module.exports = app;

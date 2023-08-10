@@ -10,7 +10,8 @@ async function create(req, res) {
     const user = await User.create(username, password);
 
     if (!user) return res.redirect("/signup?error=error creating new user");
-
+   
+    req.session.userId = userId;
     req.session.isLoggedIn = true;
     req.session.save(() => res.redirect("/"));
   } catch (err) {
@@ -20,3 +21,4 @@ async function create(req, res) {
 }
 
 module.exports = { create };
+

@@ -1,7 +1,8 @@
 {{> header}}
 <main>
   <h1>This is the home page!</h1>
-  <p>Currently, you are {{#unless isLoggedIn}} NOT {{/unless}} logged in.</p>
-  <p>You should {{#unless isLoggedIn}}NOT{{/unless}} be able to access <a href="/private">this page</a>.</p>
-  <p>Use the header above to {{#if isLoggedIn}} logout{{else}} login or create an account{{/if}}.</p>
+<form action="/recipes" method="post">
+    <input type="text" name="searchTerm" placeholder="Search for a recipe...">
+    <button type="submit">Search</button>
+</form>
 </main>
