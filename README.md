@@ -19,7 +19,7 @@ Getting Started
 1. Clone the Repository
 bash
 Copy code
-git clone https://github.com/your-username/meal-planner.git
+git clone https://github.com/mczupryn1/mmc6278-9-czupryn-margarita
 cd meal-planner
 2. Install Dependencies
 bash

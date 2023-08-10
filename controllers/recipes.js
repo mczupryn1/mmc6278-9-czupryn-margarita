@@ -6,8 +6,6 @@ const { MealPlan } = require('../models');
 // Fetch recipes based on some criteria (not shown here)
 router.get('/recipes', async (req, res) => {
     try {
-        // This is just a placeholder. Your actual API call might be different.
-        const response = await axios.get(`YOUR_API_ENDPOINT`);
         const recipes = response.data.meals;
         res.render('recipes', { recipes });
     } catch (error) {
@@ -27,7 +25,7 @@ router.post('/add-to-mealplan', async (req, res) => {
             instructions: req.body.instructions
         });
 
-        res.redirect('/some-success-page');  // Redirect to a page after adding
+        res.redirect('/mealPlan');  // Redirect to a page after adding
     } catch (error) {
         console.error("Error adding recipe to meal plan:", error);
         res.status(500).send('Error adding to meal plan');

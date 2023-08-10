@@ -1,11 +1,15 @@
-const express = require('express');
-const router = express.Router();
+const connection = require('../config/connection');
 
 exports.add = async (req, res) => {
     try {
+        const userId = req.session.userId;
+
+        // Debugging line to log the value of userId
+        console.log("User ID:", userId);
+
         const { recipeId, recipeName, recipeImageURL, ingredients, instructions } = req.body;
 
-        const result = await connection.query("INSERT INTO MealPlans (recipeId, recipeName, recipeImageURL, ingredients, instructions) VALUES (?, ?, ?, ?, ?)", [recipeId, recipeName, recipeImageURL, ingredients, instructions]);
+        const result = await connection.query("INSERT INTO MealPlans (userId, recipeId, recipeName, recipeImageURL, ingredients, instructions) VALUES (?, ?, ?, ?, ?, ?)", [userId, recipeId, recipeName, recipeImageURL, ingredients, instructions]);
 
         if (result.affectedRows) {
             res.redirect('/mealplan');  // Redirecting user to the meal plan page
