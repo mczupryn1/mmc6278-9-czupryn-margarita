@@ -1,7 +1,5 @@
 # mmc6278-9-czupryn-margarita
 
-Sure! Here's a basic README.md for the project based on the details you've provided:
-
 Meal Planner
 A simple web application to manage and plan your meals. Users can browse a collection of recipes and add them to their personalized meal plan.
 
